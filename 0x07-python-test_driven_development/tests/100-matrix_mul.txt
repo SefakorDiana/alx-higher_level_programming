@@ -1,0 +1,126 @@
+=============================
+The ```matrix_mul``` module
+=============================
+
+Using ```mul```
+-----------------------------
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+# Test cases for matrix_mul function
+
+# Example 1: Multiply 2x2 matrices
+>>> matrix_a = [[1, 2], [3, 4]]
+>>> matrix_b = [[1, 2], [3, 4]]
+>>> matrix_mul(matrix_a, matrix_b)
+[[7, 10], [15, 22]]
+
+# Test case 2: Multiply 2x2 and 2x1 matrices
+>>> matrix_a = [[1, 2], [3, 4]]
+>>> matrix_b = [[1], [2]]
+>>> matrix_mul(matrix_a, matrix_b)
+[[5], [11]]
+
+# Test case 3: Multiply 3x2 and 2x3 matrices
+>>> matrix_a = [[1, 2], [3, 4], [5, 6]]
+>>> matrix_b = [[1, 2, 3], [4, 5, 6]]
+>>> matrix_mul(matrix_a, matrix_b)
+[[9, 12, 15], [19, 26, 33], [29, 40, 51]]
+
+# Test case 4: Multiply 1x3 and 3x1 matrices
+>>> matrix_a = [[1, 2, 3]]
+>>> matrix_b = [[1], [2], [3]]
+>>> matrix_mul(matrix_a, matrix_b)
+[[14]]
+
+# Test case 5: Multipy 2x2 and 2x2 matrices
+>>> matrix_a = [[-1, -2], [-3, -4]]
+>>> matrix_b = [[-1, -2], [-3, -4]]
+>>> matrix_mul(matrix_a, matrix_b)
+[[7, 10], [15, 22]]
+
+# Test case 6: Multiply 2x2 and 2x2 matrices with floats
+>>> matrix_a = [[1.5, 2.5], [3.5, 4.5]]
+>>> matrix_b = [[1.5, 2.5], [3.5, 4.5]]
+>>> matrix_mul(matrix_a, matrix_b)
+[[11.0, 15.0], [21.0, 29.0]]
+
+# Test case 7: Multiply empty matrices
+>>> matrix_a = []
+>>> matrix_b = []
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 31, in matrix_mul
+ValueError: m_a can't be empty
+
+# Test case 8: Multiply empty matrix with non-empty matrix
+>>> matrix_a = []
+>>> matrix_b = [[1, 2], [3, 4]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 31, in matrix_mul
+ValueError: m_a can't be empty
+
+# Test case 9: Multiply non-empty matrix with empty matrix
+>>> matrix_a = [[1, 2], [3, 4]]
+>>> matrix_b = []
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 31, in matrix_mul
+ValueError: m_b can't be empty
+
+# Test case 10: Multiply matrices with incompatible dimensions
+>>> matrix_a = [[1, 2, 3], [4, 5, 6]]
+>>> matrix_b = [[1, 2], [3, 4]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 40, in matrix_mul
+ValueError: m_a and m_b can't be multiplied
+
+# Test case 11: Multiply matrices with incompatible dimensions
+>>> matrix_a = [[1, 2, 3], [4, 5, 6]]
+>>> matrix_b = [[1, 2], [3, 4]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 40, in matrix_mul
+ValueError: m_a and m_b can't be multiplied
+
+# Test case 12: Multiply matrices with different row sizes in m_b
+>>> matrix_a = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+>>> matrix_b = [[1, 2, 3], [4, 5], [6, 7, 8]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 37, in matrix_mul
+TypeError: each row of m_b must be of the same size
+
+# Test case 13: Multiply matrices with non-integer or non-float elements in m_a
+>>> matrix_a = [[1, 2], [3, '4']]
+>>> matrix_b = [[1, 2], [3, 4]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 37, in matrix_mul
+TypeError: m_a should contain only integers or floats
+
+# Test case 14: Multiply matrices with non-integer or non-float elements in m_b
+>>> matrix_a = [[1, 2], [3, 4]]
+>>> matrix_b = [[1, 2], [3, '4']]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 37, in matrix_mul
+TypeError: m_b should contain only integers or floats
+
+# Test case 15: Multiply matrices with one empty row in m_a
+>>> matrix_a = [[1, 2], [], [3, 4]]
+>>> matrix_b = [[1, 2], [3, 4]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 37, in matrix_mul
+TypeError: each row of m_b must be of the same size

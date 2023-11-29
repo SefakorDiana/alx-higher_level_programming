@@ -1,0 +1,100 @@
+=============================
+The ```lazy_matrix_mul``` module
+=============================
+
+Using ```lazy_matrix_mul```
+-----------------------------
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+"""
+    Test cases for lazy_matrix_mul function.
+
+    For simplicity, the function lazy_matrix_mul has the same requirements
+    as the 100-matrix_mul function but without using NumPy.
+
+    To run these tests, use the following command:
+    python3 -m doctest -v ./tests/101-lazy_matrix_mul.txt
+"""
+
+# Test empty matrices
+>>> m_a = []
+>>> m_b = []
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 23, in lazy_matrix_mul 
+ValueError: m_a can't be empty
+
+# Test empty matrix m_a
+>>> m_a = []
+>>> m_b = [[1, 2], [3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 23, in lazy_matrix_mul
+ValueError: m_a can't be empty
+
+# Test empty matrix m_b
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = []
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 23, in lazy_matrix_mul
+ValueError: m_b can't be empty
+
+# Test non-rectangular matrix m_a
+>>> m_a = [[1, 2], [3, 4, 5]]
+>>> m_b = [[1, 2], [3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 23, in lazy_matrix_mul
+TypeError: each row of m_a must be of the same size
+
+# Test non-rectangular matrix m_b
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[1, 2], [3, 4, 5]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 23, in lazy_matrix_mul
+TypeError: each row of m_b must be of the same size
+
+# Test matrices with incompatible dimensions
+>>> m_a = [[1, 2, 3], [4, 5, 6]]
+>>> m_b = [[1, 2], [3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 23, in lazy_matrix_mul
+ValueError: m_a and m_b can't be multiplied
+
+# Test matrices with non-integer or non-float elements in m_a
+>>> m_a = [[1, 2], [3, '4']]
+>>> m_b = [[1, 2], [3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+	File "<stdin>", line 1, in <module>
+	File "<stdin>", line 23, in lazy_matrix_mul
+TypeError: m_a should contain only integers or floats
+
+# Test matrices with non-integer or non-float elements in m_b
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[1, 2], [3, '4']]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+	File "stdin>", line 1, in <module>
+	File "<stdin>", line 23, in lazy_matrix_mul
+TypeError: m_b should contain only integers or floats
+
+# Test valid matrices
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[1, 2], [3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+[[7, 10], [15, 22]]
+
+>>> m_a = [[1, 2]]
+>>> m_b = [[3, 4], [5, 6]]
+>>> lazy_matrix_mul(m_a, m_b)
+[[13, 16]]

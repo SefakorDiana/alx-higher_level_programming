@@ -1,0 +1,64 @@
+=============================
+The ```say_my_name``` module
+=============================
+
+Using ```say_my_name```
+-----------------------------
+This is a function that divides all elements of a matrix.
+	Prototype: def say_my_name(first_name, last_name=""):
+	first_name and last_name must be strings otherwise,
+ 	raise a TypeError exception with the message first_name must be a string 
+	or last_name must be a string
+	You are not allowed to import any module	
+
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Example 1: Printing both first and last name
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+# Example 2: Printing only the first name with no last name
+>>> say_my_name("Bob")
+My name is Bob
+
+# Example 3: Invalid input (integer for first name, should raise TypeError)
+>>> try:
+...	say_my_name(12, "White")
+... except Exception as e:
+...	e
+TypeError('first_name must be a string')
+
+# Example 4: Empty first name and last name
+>>> say_my_name("", "")
+My name is 
+
+# Example 5: Special Characters in Names
+>>> say_my_name("John @", "Smith #")
+My name is John @ Smith #
+
+# Example 6: Unicode Characters in Names
+>>> say_my_name("Jöhn", "Smïth")
+My name is Jöhn Smïth
+
+# Example 7: Whitespace Characters in Names
+>>> say_my_name("  John ", " Smith ")
+My name is   John   Smith 
+
+# Example 8: Long Names
+>>> say_my_name("A" * 100, "B" * 100)
+My name is AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
+# Example 9: Number as Last Name
+>>> say_my_name("Alice", "123")
+My name is Alice 123
+
+# Example 10: Empty Last Name (should be valid)
+>>> say_my_name("Alice", "")
+My name is Alice
+
+# Example 11: Last Name as None (should raise TypeError)
+>>> try:
+...	say_my_name("Eve", None)
+... except Exception as e:
+...	e
+TypeError('last_name must be a string')
